@@ -1,1 +1,148 @@
-hello world
+<!DOCTYPE html>
+<html lang="de" class="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Niklas | niklas.网站</title>
+
+    <!-- Scripts -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    colors: {
+                        neonGreen: '#39FF14',
+                        darkGreen: '#003300',
+                    }
+                }
+            }
+        }
+    </script>
+
+    <!-- Styles -->
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body class="bg-black text-white lattice-bg">
+
+    <!-- Flying Airplane (SVG Icon following scroll) -->
+    <div id="airplane-container" class="fixed top-0 left-0 w-full h-full pointer-events-none z-[100] opacity-20">
+        <svg id="airplane-icon" class="w-12 h-12 text-neonGreen absolute top-20 left-10" viewBox="0 0 24 24" fill="currentColor">
+            <path d="M21,16L21,14L13,9L13,3.5C13,2.67 12.33,2 11.5,2C10.67,2 10,2.67 10,3.5L10,9L2,14L2,16L10,13.5L10,19L8,20.5L8,22L11.5,21L15,22L15,20.5L13,19L13,13.5L21,16Z" />
+        </svg>
+    </div>
+
+    <!-- Navigation -->
+    <nav class="fixed top-0 w-full z-50 bg-black/80 backdrop-blur-md border-b border-white/10">
+        <div class="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center">
+            <div class="text-2xl font-black text-neonGreen neon-text tracking-tighter">NIKLAS</div>
+            <div class="flex space-x-4 mono text-sm" id="lang-toggle">
+                <button onclick="setLanguage('de')" class="hover:text-neonGreen transition-colors">DE</button>
+                <button onclick="setLanguage('en')" class="hover:text-neonGreen transition-colors">EN</button>
+                <button onclick="setLanguage('zh')" class="hover:text-neonGreen transition-colors">ZH</button>
+                <button onclick="setLanguage('ru')" class="hover:text-neonGreen transition-colors">RU</button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="min-h-screen flex flex-col justify-center items-center relative px-6 overflow-hidden">
+        <div class="absolute inset-0 chinese-pattern pointer-events-none"></div>
+        <div class="absolute right-10 top-1/2 -translate-y-1/2 chinese-text-bg text-6xl text-neonGreen/5 font-serif select-none">
+            欢迎来到我的世界
+        </div>
+        <div class="absolute left-10 top-1/2 -translate-y-1/2 chinese-text-bg text-6xl text-neonGreen/5 font-serif select-none">
+            航空技术创新
+        </div>
+        <h1 id="hero-title" class="text-6xl md:text-9xl font-black text-center mb-4 tracking-tighter uppercase relative z-10">
+            Explorer & <span class="text-neonGreen">Architect</span>
+            <span class="absolute -top-10 -right-10 text-4xl opacity-10 text-neonGreen font-serif">航空</span>
+        </h1>
+        <p id="hero-subtitle" class="text-xl md:text-2xl text-white/60 text-center max-w-2xl font-light relative z-10">
+            IT-Solutions, Flugzeuge und die Welt.
+        </p>
+        <div class="mt-12 neon-line opacity-30"></div>
+    </section>
+
+    <!-- About Me & Age Section -->
+    <section id="about" class="section-padding px-6 bg-white/5 border-y border-white/5 relative">
+        <div class="absolute top-0 right-0 w-64 h-64 bg-neonGreen/5 blur-3xl rounded-full"></div>
+        <div class="max-w-4xl mx-auto relative z-10">
+            <h2 id="about-title" class="text-4xl font-bold mb-8 flex items-center">
+                <span class="w-12 h-1 bg-neonGreen mr-4"></span> About Me
+            </h2>
+            <p id="about-text" class="text-xl leading-relaxed mb-12 text-white/80">
+                Ich bin ein leidenschaftlicher IT-Spezialist, der es liebt, komplexe Lösungen zu entwickeln.
+            </p>
+            <div class="bg-black p-8 rounded-2xl border border-neonGreen/30 relative overflow-hidden group hover:border-neonGreen/100 transition-colors">
+                <div class="text-sm uppercase tracking-widest text-neonGreen mb-2 mono" id="age-label">Current Age</div>
+                <div id="age-counter" class="text-3xl md:text-5xl font-bold mono text-neonGreen neon-text">
+                    00.000000000000000
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- IT Solutions -->
+    <section id="solutions" class="section-padding px-6">
+        <div class="max-w-7xl mx-auto">
+            <h2 id="solutions-title" class="text-4xl font-bold mb-12">IT Solutions</h2>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <div class="p-10 bg-white/5 border border-white/10 rounded-3xl hover:border-neonGreen/50 transition-all group relative overflow-hidden">
+                    <div class="absolute -right-4 -bottom-4 text-6xl text-white/5 font-serif group-hover:text-neonGreen/10 transition-colors">计</div>
+                    <h3 class="text-2xl font-bold mb-4">Architecture</h3>
+                    <p class="text-white/60">Innovative and robust system designs for modern challenges.</p>
+                </div>
+                <div class="p-10 bg-white/5 border border-white/10 rounded-3xl hover:border-neonGreen/50 transition-all group relative overflow-hidden">
+                    <div class="absolute -right-4 -bottom-4 text-6xl text-white/5 font-serif group-hover:text-neonGreen/10 transition-colors">码</div>
+                    <h3 class="text-2xl font-bold mb-4">Full Stack</h3>
+                    <p class="text-white/60">From database to frontend, everything is built to scale.</p>
+                </div>
+                <div class="p-10 bg-white/5 border border-white/10 rounded-3xl hover:border-neonGreen/50 transition-all group relative overflow-hidden">
+                    <div class="absolute -right-4 -bottom-4 text-6xl text-white/5 font-serif group-hover:text-neonGreen/10 transition-colors">速</div>
+                    <h3 class="text-2xl font-bold mb-4">Efficiency</h3>
+                    <p class="text-white/60">Optimizing performance and speed for maximum impact.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Horizontal Image Gallery Aviation -->
+    <section class="horizontal-scroll min-h-screen flex items-center bg-white/5 border-y border-white/5 overflow-hidden">
+        <div class="px-6 py-12">
+            <h2 id="airplane-title" class="text-4xl font-bold mb-12"><span>Aviation Passion</span></h2>
+            <div class="scroll-content flex space-x-8" id="airplane-images-dynamic">
+                <!-- Dynamically populated -->
+            </div>
+        </div>
+    </section>
+
+    <!-- General Gallery -->
+    <section id="general-gallery" class="section-padding px-6">
+        <div class="max-w-7xl mx-auto">
+            <h2 id="gallery-title" class="text-4xl font-bold mb-12">Travel & Life</h2>
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-4" id="travel-images-dynamic">
+                <!-- Dynamically populated -->
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="py-12 border-t border-white/10 px-6">
+        <div class="max-w-7xl mx-auto text-center">
+            <p id="footer-text" class="text-white/40 font-light text-sm italic">
+                &copy; Niklas | Beste Grüße von mir.
+            </p>
+        </div>
+    </footer>
+
+    <!-- App Logic -->
+    <script src="js/main.js"></script>
+    <script src="js/gallery.js"></script>
+    <script src="js/animations.js"></script>
+</body>
+</html>
