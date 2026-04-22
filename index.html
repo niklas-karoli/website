@@ -4,9 +4,12 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Niklas | niklas.网站</title>
+    
+    <!-- Scripts -->
     <script src="https://cdn.tailwindcss.com"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+    
     <script>
         tailwind.config = {
             darkMode: 'class',
@@ -20,28 +23,25 @@
             }
         }
     </script>
-    <style>
-        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;700;900&family=JetBrains+Mono:wght@400;700&display=swap');
-        body {
-            font-family: 'Inter', sans-serif;
-            background-color: #050505;
-            color: #ffffff;
-            overflow-x: hidden;
-        }
-        .mono { font-family: 'JetBrains+Mono', monospace; }
-        .neon-text { text-shadow: 0 0 10px #39FF14, 0 0 20px #39FF14; }
-        .neon-border { border-color: #39FF14; box-shadow: 0 0 10px #39FF14; }
-        .section-padding { padding-top: 5rem; padding-bottom: 5rem; }
-    </style>
-</head>
-<body class="bg-black text-white">
 
-    <!-- Navigation / Language Toggle -->
+    <!-- Styles -->
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body class="bg-black text-white lattice-bg">
+
+    <!-- Flying Airplane (SVG Icon following scroll) -->
+    <div id="airplane-container" class="fixed top-0 left-0 w-full h-full pointer-events-none z-[100] opacity-20">
+        <svg id="airplane-icon" class="w-12 h-12 text-neonGreen absolute top-20 left-10" viewBox="0 0 24 24" fill="currentColor">
+            <path d="M21,16L21,14L13,9L13,3.5C13,2.67 12.33,2 11.5,2C10.67,2 10,2.67 10,3.5L10,9L2,14L2,16L10,13.5L10,19L8,20.5L8,22L11.5,21L15,22L15,20.5L13,19L13,13.5L21,16Z" />
+        </svg>
+    </div>
+
+    <!-- Navigation -->
     <nav class="fixed top-0 w-full z-50 bg-black/80 backdrop-blur-md border-b border-white/10">
         <div class="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center">
             <div class="text-2xl font-black text-neonGreen neon-text tracking-tighter">NIKLAS</div>
             <div class="flex space-x-4 mono text-sm" id="lang-toggle">
-                <button onclick="setLanguage('de')" class="hover:text-neonGreen transition-colors active-lang">DE</button>
+                <button onclick="setLanguage('de')" class="hover:text-neonGreen transition-colors">DE</button>
                 <button onclick="setLanguage('en')" class="hover:text-neonGreen transition-colors">EN</button>
                 <button onclick="setLanguage('zh')" class="hover:text-neonGreen transition-colors">ZH</button>
                 <button onclick="setLanguage('ru')" class="hover:text-neonGreen transition-colors">RU</button>
@@ -51,34 +51,34 @@
 
     <!-- Hero Section -->
     <section class="min-h-screen flex flex-col justify-center items-center relative px-6 overflow-hidden">
-        <div class="absolute inset-0 opacity-20 pointer-events-none">
-            <!-- Background Decoration (Placeholder for plane elements) -->
-            <div class="absolute top-1/4 left-1/4 w-96 h-96 bg-neonGreen/20 rounded-full blur-[128px]"></div>
-            <div class="absolute bottom-1/4 right-1/4 w-64 h-64 bg-darkGreen/40 rounded-full blur-[96px]"></div>
+        <div class="absolute inset-0 chinese-pattern pointer-events-none"></div>
+        <div class="absolute right-10 top-1/2 -translate-y-1/2 chinese-text-bg text-6xl text-neonGreen/5 font-serif select-none">
+            欢迎来到我的世界 
         </div>
-        <h1 id="hero-title" class="text-6xl md:text-9xl font-black text-center mb-4 tracking-tighter uppercase">
+        <div class="absolute left-10 top-1/2 -translate-y-1/2 chinese-text-bg text-6xl text-neonGreen/5 font-serif select-none">
+            航空技术创新
+        </div>
+        <h1 id="hero-title" class="text-6xl md:text-9xl font-black text-center mb-4 tracking-tighter uppercase relative z-10">
             Explorer & <span class="text-neonGreen">Architect</span>
+            <span class="absolute -top-10 -right-10 text-4xl opacity-10 text-neonGreen font-serif">航空</span>
         </h1>
-        <p id="hero-subtitle" class="text-xl md:text-2xl text-white/60 text-center max-w-2xl font-light">
+        <p id="hero-subtitle" class="text-xl md:text-2xl text-white/60 text-center max-w-2xl font-light relative z-10">
             IT-Solutions, Flugzeuge und die Welt.
         </p>
+        <div class="mt-12 neon-line opacity-30"></div>
     </section>
 
     <!-- About Me & Age Section -->
-    <section id="about" class="section-padding px-6 bg-white/5 border-y border-white/5">
-        <div class="max-w-4xl mx-auto">
+    <section id="about" class="section-padding px-6 bg-white/5 border-y border-white/5 relative">
+        <div class="absolute top-0 right-0 w-64 h-64 bg-neonGreen/5 blur-3xl rounded-full"></div>
+        <div class="max-w-4xl mx-auto relative z-10">
             <h2 id="about-title" class="text-4xl font-bold mb-8 flex items-center">
                 <span class="w-12 h-1 bg-neonGreen mr-4"></span> About Me
             </h2>
             <p id="about-text" class="text-xl leading-relaxed mb-12 text-white/80">
-                Ich bin ein leidenschaftlicher IT-Spezialist, der es liebt, komplexe Lösungen zu entwickeln.
-                Wenn ich nicht gerade code, findet man mich meistens am Flughafen oder über den Wolken.
-                Reisen und Flugzeuge sind meine Welt.
+                Ich bin ein leidenschaftlicher IT-Spezialist, der es liebt, komplexe Lösungen zu entwickeln. 
             </p>
-            <div class="bg-black p-8 rounded-2xl border border-neonGreen/30 relative overflow-hidden group">
-                <div class="absolute top-0 right-0 p-4 opacity-10 group-hover:opacity-100 transition-opacity">
-                    <svg class="w-12 h-12 text-neonGreen" fill="currentColor" viewBox="0 0 24 24"><path d="M21 16.5C21 16.88 20.79 17.21 20.47 17.38L12.57 21.82C12.41 21.94 12.21 22 12 22C11.79 22 11.59 21.94 11.43 21.82L3.53 17.38C3.21 17.21 3 16.88 3 16.5V7.5C3 7.12 3.21 6.79 3.53 6.62L11.43 2.18C11.59 2.06 11.79 2 12 2C12.21 2 12.41 2.06 12.57 2.18L20.47 6.62C20.79 6.79 21 7.12 21 7.5V16.5Z"/></svg>
-                </div>
+            <div class="bg-black p-8 rounded-2xl border border-neonGreen/30 relative overflow-hidden group hover:border-neonGreen/100 transition-colors">
                 <div class="text-sm uppercase tracking-widest text-neonGreen mb-2 mono" id="age-label">Current Age</div>
                 <div id="age-counter" class="text-3xl md:text-5xl font-bold mono text-neonGreen neon-text">
                     00.000000000000000
@@ -92,25 +92,18 @@
         <div class="max-w-7xl mx-auto">
             <h2 id="solutions-title" class="text-4xl font-bold mb-12">IT Solutions</h2>
             <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-                <!-- Solutions will be populated -->
-                <div class="p-10 bg-white/5 border border-white/10 rounded-3xl hover:border-neonGreen/50 transition-all group">
-                    <div class="w-12 h-12 bg-neonGreen/10 rounded-xl flex items-center justify-center mb-6 text-neonGreen group-hover:scale-110 transition-transform">
-                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4"></path></svg>
-                    </div>
+                <div class="p-10 bg-white/5 border border-white/10 rounded-3xl hover:border-neonGreen/50 transition-all group relative overflow-hidden">
+                    <div class="absolute -right-4 -bottom-4 text-6xl text-white/5 font-serif group-hover:text-neonGreen/10 transition-colors">计</div>
                     <h3 class="text-2xl font-bold mb-4">Architecture</h3>
                     <p class="text-white/60">Innovative and robust system designs for modern challenges.</p>
                 </div>
-                <div class="p-10 bg-white/5 border border-white/10 rounded-3xl hover:border-neonGreen/50 transition-all group">
-                    <div class="w-12 h-12 bg-neonGreen/10 rounded-xl flex items-center justify-center mb-6 text-neonGreen group-hover:scale-110 transition-transform">
-                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10"></path></svg>
-                    </div>
+                <div class="p-10 bg-white/5 border border-white/10 rounded-3xl hover:border-neonGreen/50 transition-all group relative overflow-hidden">
+                    <div class="absolute -right-4 -bottom-4 text-6xl text-white/5 font-serif group-hover:text-neonGreen/10 transition-colors">码</div>
                     <h3 class="text-2xl font-bold mb-4">Full Stack</h3>
                     <p class="text-white/60">From database to frontend, everything is built to scale.</p>
                 </div>
-                <div class="p-10 bg-white/5 border border-white/10 rounded-3xl hover:border-neonGreen/50 transition-all group">
-                    <div class="w-12 h-12 bg-neonGreen/10 rounded-xl flex items-center justify-center mb-6 text-neonGreen group-hover:scale-110 transition-transform">
-                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"></path></svg>
-                    </div>
+                <div class="p-10 bg-white/5 border border-white/10 rounded-3xl hover:border-neonGreen/50 transition-all group relative overflow-hidden">
+                    <div class="absolute -right-4 -bottom-4 text-6xl text-white/5 font-serif group-hover:text-neonGreen/10 transition-colors">速</div>
                     <h3 class="text-2xl font-bold mb-4">Efficiency</h3>
                     <p class="text-white/60">Optimizing performance and speed for maximum impact.</p>
                 </div>
@@ -118,35 +111,12 @@
         </div>
     </section>
 
-    <!-- Airplane Gallery -->
-    <section id="airplane-gallery" class="section-padding px-6 bg-white/5">
-        <div class="max-w-7xl mx-auto">
-            <h2 id="airplane-title" class="text-4xl font-bold mb-12 flex justify-between items-end">
-                <span>Aviation Passion</span>
-                <span class="text-sm font-mono text-white/40 uppercase tracking-widest">Sky bound</span>
-            </h2>
-            <div class="grid grid-cols-2 md:grid-cols-4 gap-4" id="airplane-images">
-                <div class="aspect-square bg-white/10 rounded-2xl overflow-hidden reveal">
-                    <img src="https://images.unsplash.com/photo-1542296332-2e4473faf563?q=80&w=1000&auto=format&fit=crop" alt="Plane" class="w-full h-full object-cover hover:scale-110 transition-transform duration-700">
-                </div>
-                <div class="aspect-[3/4] md:col-span-2 bg-white/10 rounded-2xl overflow-hidden reveal">
-                    <img src="https://images.unsplash.com/photo-1436491865332-7a61a109c0f3?q=80&w=1000&auto=format&fit=crop" alt="Plane" class="w-full h-full object-cover hover:scale-110 transition-transform duration-700">
-                </div>
-                <div class="aspect-square bg-white/10 rounded-2xl overflow-hidden reveal">
-                    <img src="https://images.unsplash.com/photo-1464039397811-476f652a343b?q=80&w=1000&auto=format&fit=crop" alt="Plane" class="w-full h-full object-cover hover:scale-110 transition-transform duration-700">
-                </div>
-                <div class="aspect-square bg-white/10 rounded-2xl overflow-hidden reveal">
-                    <img src="https://images.unsplash.com/photo-1520437358207-323b43b50729?q=80&w=1000&auto=format&fit=crop" alt="Plane" class="w-full h-full object-cover hover:scale-110 transition-transform duration-700">
-                </div>
-                <div class="aspect-square bg-white/10 rounded-2xl overflow-hidden reveal">
-                    <img src="https://images.unsplash.com/photo-1559268950-2d7ceb2eee35?q=80&w=1000&auto=format&fit=crop" alt="Plane" class="w-full h-full object-cover hover:scale-110 transition-transform duration-700">
-                </div>
-                <div class="aspect-video md:col-span-2 bg-white/10 rounded-2xl overflow-hidden reveal">
-                    <img src="https://images.unsplash.com/photo-1569154941061-e231b4725ef1?q=80&w=1000&auto=format&fit=crop" alt="Plane" class="w-full h-full object-cover hover:scale-110 transition-transform duration-700">
-                </div>
-                <div class="aspect-square bg-white/10 rounded-2xl overflow-hidden reveal">
-                    <img src="https://images.unsplash.com/photo-1517976487492-5750f3195933?q=80&w=1000&auto=format&fit=crop" alt="SpaceX" class="w-full h-full object-cover hover:scale-110 transition-transform duration-700">
-                </div>
+    <!-- Horizontal Image Gallery Aviation -->
+    <section class="horizontal-scroll min-h-screen flex items-center bg-white/5 border-y border-white/5 overflow-hidden">
+        <div class="px-6 py-12">
+            <h2 id="airplane-title" class="text-4xl font-bold mb-12"><span>Aviation Passion</span></h2>
+            <div class="scroll-content flex space-x-8" id="airplane-images-dynamic">
+                <!-- Dynamically populated -->
             </div>
         </div>
     </section>
@@ -155,19 +125,8 @@
     <section id="general-gallery" class="section-padding px-6">
         <div class="max-w-7xl mx-auto">
             <h2 id="gallery-title" class="text-4xl font-bold mb-12">Travel & Life</h2>
-            <div class="grid grid-cols-2 md:grid-cols-3 gap-6" id="general-images">
-                <div class="aspect-video bg-white/10 rounded-2xl overflow-hidden col-span-2 reveal">
-                    <img src="https://images.unsplash.com/photo-1500835595337-f7303a05ec95?q=80&w=1000&auto=format&fit=crop" alt="Travel" class="w-full h-full object-cover hover:scale-110 transition-transform duration-700">
-                </div>
-                <div class="aspect-square bg-white/10 rounded-2xl overflow-hidden reveal">
-                    <img src="https://images.unsplash.com/photo-1476514525535-07fb3b4ae5f1?q=80&w=1000&auto=format&fit=crop" alt="Travel" class="w-full h-full object-cover hover:scale-110 transition-transform duration-700">
-                </div>
-                <div class="aspect-square bg-white/10 rounded-2xl overflow-hidden reveal">
-                    <img src="https://images.unsplash.com/photo-1503221043305-f7498f8b7888?q=80&w=1000&auto=format&fit=crop" alt="Travel" class="w-full h-full object-cover hover:scale-110 transition-transform duration-700">
-                </div>
-                <div class="aspect-video bg-white/10 rounded-2xl overflow-hidden col-span-2 reveal">
-                    <img src="https://images.unsplash.com/photo-1527631746610-bca00a040d60?q=80&w=1000&auto=format&fit=crop" alt="Travel" class="w-full h-full object-cover hover:scale-110 transition-transform duration-700">
-                </div>
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-4" id="travel-images-dynamic">
+                <!-- Dynamically populated -->
             </div>
         </div>
     </section>
@@ -181,189 +140,9 @@
         </div>
     </footer>
 
-    <script>
-        // --- GSAP ANIMATIONS ---
-        gsap.registerPlugin(ScrollTrigger);
-
-        // Hero animations
-        gsap.from("#hero-title", {
-            y: 100,
-            opacity: 0,
-            duration: 1.5,
-            ease: "power4.out"
-        });
-
-        gsap.from("#hero-subtitle", {
-            y: 50,
-            opacity: 0,
-            duration: 1.5,
-            delay: 0.5,
-            ease: "power4.out"
-        });
-
-        // Section reveals
-        const reveals = document.querySelectorAll('.reveal');
-        reveals.forEach((el) => {
-            gsap.from(el, {
-                scrollTrigger: {
-                    trigger: el,
-                    start: "top 85%",
-                    toggleActions: "play none none reverse"
-                },
-                y: 50,
-                opacity: 0,
-                duration: 1,
-                ease: "power2.out"
-            });
-        });
-
-        // About section reveal
-        gsap.from("#about h2, #about p, #about .bg-black", {
-            scrollTrigger: {
-                trigger: "#about",
-                start: "top 70%"
-            },
-            y: 30,
-            opacity: 0,
-            duration: 1,
-            stagger: 0.2
-        });
-
-        // Solutions cards stagger
-        gsap.from("#solutions .grid > div", {
-            scrollTrigger: {
-                trigger: "#solutions",
-                start: "top 70%"
-            },
-            y: 50,
-            opacity: 0,
-            duration: 1,
-            stagger: 0.2
-        });
-
-        // --- TRANSLATIONS ---
-        const translations = {
-            de: {
-                heroTitle: 'Explorer & <span class="text-neonGreen">Architect</span>',
-                heroSubtitle: 'IT-Solutions, Flugzeuge und die Welt.',
-                aboutTitle: 'Über Mich',
-                aboutText: 'Ich bin ein leidenschaftlicher IT-Spezialist, der es liebt, komplexe Lösungen zu entwickeln. Wenn ich nicht gerade code, findet man mich meistens am Flughafen oder über den Wolken. Reisen und Flugzeuge sind meine Welt.',
-                ageLabel: 'Aktuelles Alter',
-                solutionsTitle: 'IT Lösungen',
-                airplaneTitle: 'Luftfahrt Passion',
-                galleryTitle: 'Reisen & Leben',
-                footerText: '&copy; Niklas | Beste Grüße von mir.',
-                sol1Title: 'Architektur',
-                sol1Text: 'Innovative und robuste Systemdesigns für moderne Herausforderungen.',
-                sol2Title: 'Full Stack',
-                sol2Text: 'Von der Datenbank bis zum Frontend, alles auf Skalierbarkeit ausgelegt.',
-                sol3Title: 'Effizienz',
-                sol3Text: 'Optimierung von Performance und Geschwindigkeit für maximale Wirkung.'
-            },
-            en: {
-                heroTitle: 'Explorer & <span class="text-neonGreen">Architect</span>',
-                heroSubtitle: 'IT-Solutions, Airplanes and the World.',
-                aboutTitle: 'About Me',
-                aboutText: 'I am a passionate IT specialist who loves developing complex solutions. When I\'m not coding, you\'ll usually find me at the airport or above the clouds. Traveling and airplanes are my world.',
-                ageLabel: 'Current Age',
-                solutionsTitle: 'IT Solutions',
-                airplaneTitle: 'Aviation Passion',
-                galleryTitle: 'Travel & Life',
-                footerText: '&copy; Niklas | Best regards from me.',
-                sol1Title: 'Architecture',
-                sol1Text: 'Innovative and robust system designs for modern challenges.',
-                sol2Title: 'Full Stack',
-                sol2Text: 'From database to frontend, everything is built to scale.',
-                sol3Title: 'Efficiency',
-                sol3Text: 'Optimizing performance and speed for maximum impact.'
-            },
-            zh: {
-                heroTitle: '探索者与 <span class="text-neonGreen">架构师</span>',
-                heroSubtitle: 'IT 解决方案、飞机与世界。',
-                aboutTitle: '关于我',
-                aboutText: '我是一名热衷于开发复杂解决方案的 IT 专家。不写代码时，你通常会在机场或云端发现我。旅行和飞机是我的世界。',
-                ageLabel: '当前年龄',
-                solutionsTitle: 'IT 解决方案',
-                airplaneTitle: '航空热情',
-                galleryTitle: '旅行与生活',
-                footerText: '&copy; Niklas | 来自我的诚挚问候。',
-                sol1Title: '架构',
-                sol1Text: '应对现代挑战的创新且稳健的系统设计。',
-                sol2Title: '全栈',
-                sol2Text: '从数据库到前端，一切都为扩展而生。',
-                sol3Title: '效率',
-                sol3Text: '优化性能和速度以产生最大影响。'
-            },
-            ru: {
-                heroTitle: 'Исследователь и <span class="text-neonGreen">Архитектор</span>',
-                heroSubtitle: 'IT-решения, самолеты и мир.',
-                aboutTitle: 'Обо мне',
-                aboutText: 'Я страстный IT-специалист, который любит разрабатывать сложные решения. Когда я не программирую, вы обычно найдете меня в аэропорту или над облаками. Путешествия и самолеты — это мой мир.',
-                ageLabel: 'Текущий возраст',
-                solutionsTitle: 'IT-решения',
-                airplaneTitle: 'Авиационная страсть',
-                galleryTitle: 'Путешествия и жизнь',
-                footerText: '&copy; Niklas | С наилучшими пожеланиями от меня.',
-                sol1Title: 'Архитектура',
-                sol1Text: 'Инновационные и надежные системные решения для современных задач.',
-                sol2Title: 'Full Stack',
-                sol2Text: 'От базы данных до фронтенда — все создано для масштабирования.',
-                sol3Title: 'Эффективность',
-                sol3Text: 'Оптимизация производительности и скорости для максимального эффекта.'
-            }
-        };
-
-        function setLanguage(lang) {
-            document.documentElement.lang = lang;
-            const t = translations[lang];
-
-            document.getElementById('hero-title').innerHTML = t.heroTitle;
-            document.getElementById('hero-subtitle').innerText = t.heroSubtitle;
-            document.getElementById('about-title').innerHTML = `<span class="w-12 h-1 bg-neonGreen mr-4"></span> ${t.aboutTitle}`;
-            document.getElementById('about-text').innerText = t.aboutText;
-            document.getElementById('age-label').innerText = t.ageLabel;
-            document.getElementById('solutions-title').innerText = t.solutionsTitle;
-            document.getElementById('airplane-title').querySelector('span').innerText = t.airplaneTitle;
-            document.getElementById('gallery-title').innerText = t.galleryTitle;
-            document.getElementById('footer-text').innerHTML = t.footerText;
-
-            // Solutions cards (selecting by position/content or adding IDs)
-            const solutionCards = document.querySelectorAll('#solutions h3');
-            solutionCards[0].innerText = t.sol1Title;
-            solutionCards[0].nextElementSibling.innerText = t.sol1Text;
-            solutionCards[1].innerText = t.sol2Title;
-            solutionCards[1].nextElementSibling.innerText = t.sol2Text;
-            solutionCards[2].innerText = t.sol3Title;
-            solutionCards[2].nextElementSibling.innerText = t.sol3Text;
-
-            // Update active state in nav
-            document.querySelectorAll('#lang-toggle button').forEach(btn => {
-                btn.classList.remove('text-neonGreen', 'font-bold');
-                if(btn.getAttribute('onclick').includes(`'${lang}'`)) {
-                    btn.classList.add('text-neonGreen', 'font-bold');
-                }
-            });
-        }
-
-        // --- AGE COUNTER ---
-        const birthDate = new Date('2007-03-25T09:55:00+01:00'); // German time (CET is +1, CEST is +2)
-        // Note: 25. March 2007 was transition to DST in Germany (at 02:00), so 09:55 was CEST (+2)
-        // But the date constructor handles ISO strings with offsets well.
-        // March 25, 2007 09:55 in Germany was CEST (+02:00)
-        const birthDateCorrected = new Date('2007-03-25T09:55:00+02:00');
-
-        function updateAge() {
-            const now = new Date();
-            const diffInMs = now - birthDateCorrected;
-            const ageInYears = diffInMs / (1000 * 60 * 60 * 24 * 365.242199); // Using mean tropical year
-
-            document.getElementById('age-counter').innerText = ageInYears.toFixed(15);
-            requestAnimationFrame(updateAge);
-        }
-
-        // Initialize
-        setLanguage('de');
-        updateAge();
-    </script>
+    <!-- App Logic -->
+    <script src="js/main.js"></script>
+    <script src="js/gallery.js"></script>
+    <script src="js/animations.js"></script>
 </body>
 </html>
