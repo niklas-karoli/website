@@ -1,0 +1,64 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;700;900&family=JetBrains+Mono:wght@400;700&display=swap');
+
+body {
+    font-family: 'Inter', sans-serif;
+    background-color: #050505;
+    color: #ffffff;
+    overflow-x: hidden;
+}
+
+.mono { font-family: 'JetBrains+Mono', monospace; }
+.neon-text { text-shadow: 0 0 10px #39FF14, 0 0 20px #39FF14; }
+.neon-border { border-color: #39FF14; box-shadow: 0 0 10px #39FF14; }
+.section-padding { padding-top: 5rem; padding-bottom: 5rem; }
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+    width: 8px;
+}
+::-webkit-scrollbar-track {
+    background: #050505;
+}
+::-webkit-scrollbar-thumb {
+    background: #1a1a1a;
+    border-radius: 4px;
+}
+::-webkit-scrollbar-thumb:hover {
+    background: #39FF14;
+}
+
+/* Chinese Flair Background Patterns */
+.chinese-pattern {
+    background-image: radial-gradient(#39FF14 0.5px, transparent 0.5px);
+    background-size: 20px 20px;
+    opacity: 0.1;
+}
+
+.lattice-bg {
+    background-color: #050505;
+    background-image:  linear-gradient(#0a0a0a 2px, transparent 2px), linear-gradient(90deg, #0a0a0a 2px, transparent 2px);
+    background-size: 40px 40px;
+}
+
+.cyber-glow {
+    box-shadow: 0 0 20px rgba(57, 255, 20, 0.2);
+    transition: box-shadow 0.3s ease-in-out;
+}
+
+.cyber-glow:hover {
+    box-shadow: 0 0 40px rgba(57, 255, 20, 0.5);
+}
+
+.chinese-text-bg {
+    font-family: serif;
+    writing-mode: vertical-rl;
+    text-orientation: upright;
+    user-select: none;
+    pointer-events: none;
+}
+
+.neon-line {
+    height: 1px;
+    background: linear-gradient(90deg, transparent, #39FF14, transparent);
+    width: 100%;
+}
